@@ -1,0 +1,31 @@
+<div id="contentLoginMLS" class="left">
+    <h6 class="TitleLoginEs">Ingrese al Cuestionario</h6>
+    <form id="loginMLS" method="post" action="">
+        <fieldset class="blockFieldMLS">
+            <div class="block">
+                <label for="usuarioMLS" class="TextoInputLogin left fnormal">Usuario</label>
+                <?php $errors = $this->frmlogin->userEmail->hasErrors(); ?>
+                <?= $this->frmlogin->userEmail->setAttribs(array('alt' => '', 'id' => 'femail', 'class' => 'sizeInputLogin placeH cGray left', 'tabindex' => '1'))->renderViewHelper(); ?>
+            </div>
+            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                <?php echo ($errors?$this->frmlogin->userEmail->errMsg:''); ?>
+            </span>
+            <div class="respW"></div>
+            <div class="block">
+                <label for="passMLS" class="TextoInputLogin left fnormal">Contraseña</label>
+                <?php $errors = $this->frmlogin->userPass->hasErrors(); ?>
+                <?= $this->frmlogin->userPass->setAttribs(array('id' => 'fpassword', 'class' => 'sizeInputLogin left', 'tabindex' => '1'))->renderViewHelper(); ?>
+            </div>
+            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                <?php echo ($errors?$this->frmlogin->userPass->errMsg:''); ?>
+            </span>
+            <div class="block">
+                <input type="submit" id="loginAdminBtn" value="Ingresar" class="btnAlladmin"/>
+            </div>
+            <div class="respW"></div>
+        </fieldset>
+        <?= $this->frmlogin->return->renderViewHelper(); ?>
+        <?= $this->frmlogin->tipo->renderViewHelper(); ?>
+        <?= $this->frmlogin->auth_token->renderViewHelper(); ?>
+    </form>
+</div>

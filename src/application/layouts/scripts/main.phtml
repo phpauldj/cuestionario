@@ -1,0 +1,29 @@
+<!doctype html>
+<?php //echo $this->doctype() ?>
+<!--[if lt IE 7]><html class="no-js ie6" lang="es"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7" lang="es"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="es"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="es"><!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle().PHP_EOL; ?>
+        <?php echo $this->headLink().PHP_EOL; ?>
+        <?php echo $this->headMeta().PHP_EOL; ?>
+        <?php echo $this->headScript().PHP_EOL; ?>
+        <?php echo $this->headStyle().PHP_EOL; ?>
+    </head>
+    <body>
+        <?php echo $this->layout()->content; ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script>
+            window.jQuery || document.write(
+            '<script src="<?php echo MEDIA_URL ?>/js/libs/jquery-1.7.1.min.js">\x3C/script>')
+        </script>
+        <script src="<?php echo MEDIA_URL ?>/js/main.js"></script>
+        <!--[if lt IE 7 ]>
+        <script src="<?php echo MEDIA_URL ?>/js/libs/dd_belatedpng.js"></script>
+        <script>DD_belatedPNG.fix('img, .png_bg');</script>
+        <![endif]-->
+    </body>
+    </html>
