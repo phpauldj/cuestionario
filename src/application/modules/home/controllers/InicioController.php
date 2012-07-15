@@ -15,6 +15,16 @@ class Home_InicioController extends App_Controller_Action{
     public function init() {
         parent::init();
     }
+    
+    public function indexAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+        
+        echo 'Hello World!<br>';
+        
+        var_dump($this->auth);
+    }
 }
 
 ?>
