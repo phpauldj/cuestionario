@@ -12,7 +12,7 @@ class Home_HomeController extends App_Controller_Action
     public function indexAction()
     {
         if ($this->isAuth && isset($this->auth["usuario"])) {
-            $this->_redirect("/inicio");
+            $this->_redirect("/panel");
         }
         //var_dump($this->_getAllParams());
         $this->view->headTitle('Ingreso');
@@ -72,7 +72,7 @@ class Home_HomeController extends App_Controller_Action
             
             if ($isValid) {
                 # TODO : Cambiar dirección de inicio
-                $next = '/inicio';
+                $next = '/panel';
                 $this->getMessenger()->success($this->_messageSuccess);
             } else {
                 $next = '/';

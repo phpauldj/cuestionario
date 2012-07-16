@@ -10,20 +10,19 @@
  *
  * @author Paul
  */
-class Home_InicioController extends App_Controller_Action{
+class Home_CuestionarioController extends App_Controller_Action_Encuestado{
+    
     //put your code here
     public function init() {
         parent::init();
+        $this->view->activo = self::MENU_NAME_CUESTIONARIO;
     }
     
     public function indexAction()
     {
-        $this->_helper->layout->disableLayout();
-        $this->_helper->viewRenderer->setNoRender();
+//        $this->_helper->layout->disableLayout();
+//        $this->_helper->viewRenderer->setNoRender();
         
-        echo 'Hello World!<br>';
-        
-        var_dump($this->auth);
     }
 }
 

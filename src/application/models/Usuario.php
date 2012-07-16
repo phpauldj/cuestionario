@@ -60,7 +60,7 @@ class Application_Model_Usuario extends App_Db_Table_Abstract
             }
             //var_dump($usuario, $options); exit;
             $datalogeo['usuario'] = $usuario;
-            $datalogeo[$type] = $related;
+            //$datalogeo[$type] = $related;
             //$datalogeo['opciones'] = $options;
             
             $authStorage = $auth->getStorage();

@@ -25,7 +25,7 @@ class App_Auth_Adapter_ClubDbTable extends Zend_Auth_Adapter_DbTable
     if (!empty ($row)) {
       $encPass = $row[$this->_credentialColumn];
 
-      if (self::checkPassword($this->_credential, $encPass)) {
+      if (self::checkMd5($this->_credential, $encPass)) {
         $row['zend_auth_credential_match'] = 1;
       }
     }
@@ -86,4 +86,10 @@ class App_Auth_Adapter_ClubDbTable extends Zend_Auth_Adapter_DbTable
     return $this;
   }
 
+  public static function checkMd5($rawPassword, $encPassword)
+  {
+    $credentialEnc = md5($rawPassword, false);
+    //var_dump($credentialEnc,' == ',$encPassword); exit;
+    return $credentialEnc == $encPassword;
+  }
 }

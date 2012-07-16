@@ -1,0 +1,41 @@
+<style>
+    ul{
+        margin-left: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 10px;
+        padding-top: 5px;
+        border-bottom: 3px solid darkseagreen;
+        z-index: 0;
+    }
+    li{
+        display: inline;
+        height: 35px;
+        line-height: 30px;
+        margin-left: 10px;
+    }
+    li a{
+        text-decoration: none;
+    }
+    li a.activo{
+        padding: 5px 8px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #000;
+        border: 3px solid darkseagreen;
+        border-bottom: none;
+        z-index: 9999;
+    }
+    
+    .borderCont{
+        border: 3px solid darkseagreen;
+    }
+</style>
+<?php $active = 'activo'; ?>
+<ul style="list-style: none outside none">
+    <li><a href="<?php echo $this->url(array('controller'=>'panel', 'action'=>'index'), 'default', true); ?>" 
+           class="<?php echo (App_Controller_Action_Encuestado::MENU_NAME_FICHA==$this->activo?$active:''); ?>">Ficha Sociodemográfica</a></li>
+    <li><a href="<?php echo $this->url(array('controller'=>'cuestionario', 'action'=>'index'), 'default', true); ?>"
+           class="<?php echo (App_Controller_Action_Encuestado::MENU_NAME_CUESTIONARIO==$this->activo?$active:''); ?>">Cuestionario</a></li>
+    <li><a href="<?php echo $this->url(array(), 'logout', true); ?>">Logout</a></li>
+</ul>
