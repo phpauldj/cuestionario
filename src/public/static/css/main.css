@@ -1,3 +1,55 @@
 /*
 base
 */
+/*default*/
+html{ /*height:100%;*/ color:#333; direction:ltr }
+body {
+    background-color:#F5F3F1;
+    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif, Garuda;
+    font-size: 12px;
+    line-height: 1.25
+}
+label { cursor: pointer }
+input, select { border: 1px solid #CFCFD0 }
+input{ padding: 5px 5px; margin: 0; }
+select{ padding: 3px 4px }
+textarea{
+	border: 1px solid #CFCFD0;
+	padding: 6px 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	resize: none
+}
+fieldset { display: block }
+input:focus, select:focus, textarea:focus{
+	border-color:#C7A158;
+	-moz-box-shadow: inset 1px 1px 1px #E6C27D;
+	-webkit-box-shadow: inset 1px 1px 1px #E6C27D;
+	box-shadow:inset 1px 1px 1px #E6C27D;
+}
+button{ cursor:pointer }
+input[disabled], select[disabled], textarea[disabled]{ background-color: #EBEBE4 }
+/*-------*/
+
+
+.bloqueN{ position:relative; margin-top:18px; overflow:hidden }
+.fieldsBen{ width:810px; padding:0 75px }
+.btnContent{ position:relative; margin-top:18px; margin-bottom:18px; margin-left: 145px; overflow:hidden; }
+.btnContent .button{ cursor:pointer }
+.radioSeparate{ margin-right: 8px; }
+
+/*.all, .block { width:100%; overflow:hidden }*/
+.left { float:left }
+.right { float:right }
+.inputText{ width:252px; }
+.req{ color:#F00}
+.noReq .req{ padding-left: 2px }
+.hide, .close { display:none }
+.block { display:block; margin:0 0 10px }
+
+.inputEdad{ width:35px; }
+.selectN{ width:200px; margin-right: 6px; }
+.labelC { width: 200px }
+.response{ margin-left: 10px; width:95px }
+.bad, .errors li { color:#c33 }
+.block .bad, .block .good{ padding-left: 15px; background-position:left 3px }
+.good, .success{ color:#390 }

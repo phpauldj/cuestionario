@@ -3,74 +3,99 @@
 <div class="">
 
     <form name="frmficha" id="frmficha" method="post" action="">
+        <input type="hidden" id="opera" name="opera" value="<?php echo $this->opera; ?>"/>
         <fieldset id="dataFormNBF" class="fieldsBen all">    
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->area->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="area"><span class="req">*</span> Area ó Especialidad del Negocio: </label>
+                <label class="labelC left" for="area"><span class="req">*</span> Area ó Especialidad del Negocio: </label>
                 <?=
                 $this->frmficha->area->setAttribs(
                     array(
                         'id' => 'area',
-                        'class' => 'inputBenN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'selectN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '1'
                     )
                 )->renderViewHelper();
                 ?>
+                <? $hasError2 = $this->frmficha->txtarea->hasErrors(); 
+                   $val2 = $this->frmficha->getArea(); ?>
+                <?=
+                $this->frmficha->txtarea->setAttribs(
+                    array(
+                        'id' => 'txtarea',
+                        'class' => ($val2=='O'?'':'hide').' inputText left ' . ((!$hasError2 && $this->isPost) ? ' ready' : '')
+                        //,'tabindex' => '3'
+                    ))->renderViewHelper();
+                ?>
+                <span class="response left <?= $hasError2 ? ' bad' : '' ?>"><?= $hasError2 ? $this->frmficha->txtarea->errMsg : '' ?></span>
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->area->errMsg : '' ?></span>
             </div>
 
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->cbocargo->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="cbocargo"><span class="req">*</span> Cargo: </label>
+                <label class="labelC left" for="cbocargo"><span class="req">*</span> Cargo: </label>
                 <?=
                 $this->frmficha->cbocargo->setAttribs(
                     array(
                         'id' => 'cbocargo',
-                        'class' => 'selectBenN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'selectN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '2'
                     )
                 )->renderViewHelper();
                 ?>
+                <? $hasError2 = $this->frmficha->txtcargo->hasErrors(); 
+                   $val2 = $this->frmficha->getCargo();?>
+                <?=
+                $this->frmficha->txtcargo->setAttribs(
+                    array(
+                        'id' => 'txtcargo',
+                        'class' => ($val2=='O'?'':'hide').' inputText left ' . ((!$hasError2 && $this->isPost) ? ' ready' : '')
+                        //,'tabindex' => '3'
+                    ))->renderViewHelper();
+                ?>
+                <span class="response left <?= $hasError2 ? ' bad' : '' ?>"><?= $hasError2 ? $this->frmficha->txtcargo->errMsg : '' ?></span>
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->cbocargo->errMsg : '' ?></span>
             </div>
             
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->edad->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="edad"><span class="req">*</span> Edad: </label>
+                <label class="labelC left" for="edad"><span class="req">*</span> Edad: </label>
                 <?=
                 $this->frmficha->edad->setAttribs(
                     array(
                         'id' => 'edad',
-                        'class' => 'inputBenN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'inputEdad left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '3'
                     ))->renderViewHelper();
                 ?>
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->edad->errMsg : '' ?></span>
             </div>
 
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->sexo->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="sexo"><span class="req">*</span> Sexo: </label>
+                <label class="labelC left" for="sexo"><span class="req">*</span> Sexo: </label>
+                <div class="left">
                 <?=
                 $this->frmficha->sexo->setAttribs(
                     array(
                         'id' => 'sexo',
-                        'class' => 'left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'radioSeparate left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '4'
                     )
                 )->renderViewHelper();
                 ?>
+                </div>
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->sexo->errMsg : '' ?></span>
             </div>
             
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->cboestadocivil->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="cboestadocivil"><span class="req">*</span> Estado Civil: </label>
+                <label class="labelC left" for="cboestadocivil"><span class="req">*</span> Estado Civil: </label>
                 <?=
                 $this->frmficha->cboestadocivil->setAttribs(
                     array(
                         'id' => 'cboestadocivil',
-                        'class' => 'selectBenN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'selectN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '2'
                     )
                 )->renderViewHelper();
@@ -78,46 +103,57 @@
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->cboestadocivil->errMsg : '' ?></span>
             </div>
             
-            <div class="bloqueNbeneficio">
+            <div class="bloqueN">
                 <? $hasError = $this->frmficha->cbogradoinstruccion->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="cbogradoinstruccion"><span class="req">*</span> Grado de Instrucción: </label>
+                <label class="labelC left" for="cbogradoinstruccion"><span class="req">*</span> Grado de Instrucción: </label>
                 <?=
                 $this->frmficha->cbogradoinstruccion->setAttribs(
                     array(
                         'id' => 'cbogradoinstruccion',
-                        'class' => 'selectBenN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'class' => 'selectN left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '2'
                     )
                 )->renderViewHelper();
                 ?>
+                <? $hasError2 = $this->frmficha->txtgradoi->hasErrors(); 
+                   $val2 = $this->frmficha->getGradoInstruccion();?>
+                <?=
+                $this->frmficha->txtgradoi->setAttribs(
+                    array(
+                        'id' => 'txtgradoi',
+                        'class' => ($val2=='5'?'':'hide').' inputText left ' . ((!$hasError2 && $this->isPost) ? ' ready' : '')
+                        //,'tabindex' => '3'
+                    ))->renderViewHelper();
+                ?>
+                <span class="response left <?= $hasError2 ? ' bad' : '' ?>"><?= $hasError2 ? $this->frmficha->txtgradoi->errMsg : '' ?></span>
                 <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->cbogradoinstruccion->errMsg : '' ?></span>
             </div>
             
-            <div class="bloqueNbeneficio">
-                <? $hasError = $this->frmficha->chktipocontrata->hasErrors(); ?>
-                <label class="labelGestorBeneficio left" for="chktipocontrata"><span class="req">*</span> Tipo de Contratación: </label>
+            <div class="bloqueN">
+                <? $hasError = $this->frmficha->tipocontrata->hasErrors(); ?>
+                <label class="labelC left" for="tipocontrata"><span class="req">*</span> Tipo de Contratación: </label>
+                <div class="left">
                 <?=
-                $this->frmficha->chktipocontrata->setAttribs(
+                $this->frmficha->tipocontrata->setAttribs(
                     array(
-                        'id' => 'chktipocontrata',
-                        'class' => 'left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                        'id' => 'tipocontrata',
+                        'class' => 'radioSeparate left requerido ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
                         'tabindex' => '4'
                     )
                 )->renderViewHelper();
                 ?>
-                <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->chktipocontrata->errMsg : '' ?></span>
+                </div>
+                <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->frmficha->tipocontrata->errMsg : '' ?></span>
             </div>
             
-<!--            <div class="bloqueNbeneficio">
-                <label class="labelGestorBeneficio ml5 left" for="estado"><span class="req">*</span> <?//= $this->formBeneficio->estado->getLabel() ?> :</label>
+<!--            <div class="bloqueN">
+                <label class="labelC ml5 left" for="estado"><span class="req">*</span> <?//= $this->formBeneficio->estado->getLabel() ?> :</label>
                 <?//= $this->formBeneficio->estado->setAttribs(array('tabindex' => '24', 'class' => 'requerido ready'))->renderViewHelper(); ?>
                 <span class="response right"></span>
             </div>-->
 
-            <div class="all">
-                <div id="adminSaveNbene">
-                    <input id="btnUpdate" class="adminSaveBtnbene left" type="submit" value="GUARDAR DATOS" />
-                </div> 
+            <div class="btnContent">
+                <input id="btnUpdate" class="button left" type="submit" value="GUARDAR DATOS" />
             </div>
         </fieldset>
     </form>

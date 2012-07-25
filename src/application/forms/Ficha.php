@@ -8,6 +8,8 @@
 class Application_Form_Ficha extends App_Form
 {
     private $_maxArea = '100';
+    private $_maxCargo = '100';
+    private $_maxGradoI = '100';
     private $_maxEdad = '2';
     
     public function init()
@@ -15,8 +17,15 @@ class Application_Form_Ficha extends App_Form
         parent::init();
         
         // Area ó Especialidad del Negocio
-        $e = new Zend_Form_Element_Text('area');
+        $e = new Zend_Form_Element_Select('area');
         $e->setRequired();
+        $e->addMultiOption('', '.::Seleccione::.');
+        $e->addMultiOptions(Application_Model_Especialidad::getEspecialidades());
+        $e->addMultiOption('O', 'Otro');
+        $e->errMsg = "Seleccione Area ó Especialidad de Negocio";
+        $this->addElement($e);
+        //-----------------------------------------------
+        $e = new Zend_Form_Element_Text('txtarea');
         $e->setAttrib('maxlength', $this->_maxArea);
         $e->errMsg = "Ingrese Area ó Especialidad de Negocio";
         $this->addElement($e);
@@ -27,6 +36,11 @@ class Application_Form_Ficha extends App_Form
         $e->addMultiOption('', '.::Seleccione::.');
         $e->addMultiOptions(Application_Model_Cargo::getCargos());
         $e->addMultiOption('O', 'Otro');
+        $e->errMsg = "Seleccione Cargo";
+        $this->addElement($e);
+        //-----------------------------------------------
+        $e = new Zend_Form_Element_Text('txtcargo');
+        $e->setAttrib('maxlength', $this->_maxCargo);
         $e->errMsg = "Ingrese Cargo";
         $this->addElement($e);
         
@@ -58,11 +72,16 @@ class Application_Form_Ficha extends App_Form
         $e->setRequired();
         $e->addMultiOption('', '.::Seleccione::.');
         $e->addMultiOptions(Application_Model_GradoInstruccion::getGrados());
+        $e->errMsg = "Seleccione Grado de Instrucción";
+        $this->addElement($e);
+        //-----------------------------------------------
+        $e = new Zend_Form_Element_Text('txtgradoi');
+        $e->setAttrib('maxlength', $this->_maxGradoI);
         $e->errMsg = "Ingrese Grado de Instrucción";
         $this->addElement($e);
         
         // Tipo de Contratación
-        $e = new Zend_Form_Element_Radio('chktipocontrata');
+        $e = new Zend_Form_Element_Radio('tipocontrata');
         $e->setRequired();
         $e->setMultiOptions(array('P'=>'Planillas', 'O'=>'Outsourcing'));
         $e->errMsg = "Ingrese Tipo de Contratación";
@@ -92,4 +111,86 @@ class Application_Form_Ficha extends App_Form
         return $form->setType($type);
     }
     
+    public function setArea($idarea)
+    {
+        $e = $this->getElement('area');
+        $e->setValue($idarea);
+    }
+    public function setRequiredTextArea()
+    {
+        $e = $this->getElement('txtarea');
+        $e->setRequired();
+    }
+    public function getArea()
+    {
+        $e = $this->getElement('area');
+        return $e->getValue();
+    }
+    
+    public function setCargo($idcargo)
+    {
+        $e = $this->getElement('cbocargo');
+        $e->setValue($idcargo);
+    }
+    public function setRequiredTextCargo()
+    {
+        $e = $this->getElement('txtcargo');
+        $e->setRequired();
+    }
+    public function getCargo()
+    {
+        $e = $this->getElement('cbocargo');
+        return $e->getValue();
+    }
+    
+    public function setEdad($edad)
+    {
+        $e = $this->getElement('edad');
+        $e->setValue($edad);
+    }
+    
+    public function setSexo($sexo)
+    {
+        $e = $this->getElement('sexo');
+        $e->setValue($sexo);
+    }
+    
+    public function setEstadoCivil($ecivil)
+    {
+        $e = $this->getElement('cboestadocivil');
+        $e->setValue($ecivil);
+    }
+    
+    public function setGradoInstruccion($grado)
+    {
+        $e = $this->getElement('cbogradoinstruccion');
+        $e->setValue($grado);
+    }
+    public function setRequiredTextGradoI()
+    {
+        $e = $this->getElement('txtgradoi');
+        $e->setRequired();
+    }
+    public function getGradoInstruccion()
+    {
+        $e = $this->getElement('cbogradoinstruccion');
+        return $e->getValue();
+    }
+    
+    public function setTipoContratacion($tipocontra)
+    {
+        $e = $this->getElement('tipocontrata');
+        $e->setValue($tipocontra);
+    }
+    
+    public function validAreaOtro()
+    {
+        $cboe = $this->getElement('area');
+        if ($cboe->getValue()=='O') {
+            $txte = $this->getElement('txtarea');
+            $txte->setRequired();
+            return false;
+        }
+        return true;
+    }
 }
