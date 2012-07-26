@@ -1,4 +1,6 @@
-<?php echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
+<?php 
+echo md5("123456");
+echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
 <div id="contentLoginMLS" class="left">
     <h6 class="TitleLoginEs">Ingrese al Cuestionario</h6>
     <form id="loginMLS" method="post" action="">

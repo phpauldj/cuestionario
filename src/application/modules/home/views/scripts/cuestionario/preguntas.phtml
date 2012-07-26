@@ -1,0 +1,98 @@
+<?php echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
+<?php echo $this->partial('_partials/_menu.phtml', array('activo'=>$this->activo)); ?>
+<div class="">
+
+    <form action="/cuestionario/agregar" method="post" name="frmcuestionario" id="frmcuestionario">
+        
+      <div style="padding: 20px">
+            
+           
+
+        <p>
+          
+            
+            
+            
+         
+        <table width="1000" border="0" align="center" cellpadding="3" cellspacing="3">
+             
+             <tr>
+               <td colspan="3"><div align="center"><strong>INSTRUCCIONES</strong></div></td>
+             </tr>
+             <tr>
+               <td colspan="3">&nbsp;</td>
+          </tr>
+             <tr>
+               <td colspan="3" bgcolor="#E9E9E9"><?=$this->paginationControl($this->listaPreguntas, 'Sliding', 'pagination.phtml', array('generar' => true)); ?></td>
+             </tr>
+             <tr>
+               <td colspan="3"><p>Este  cuestionario contiene un conjunto de frases que cortas que permite hacer una  descripción de Ud. mismo(a). </p>
+               <p>Para ello,  diga en qué medida cada una de las oraciones que aparecen a continuación es  verdadera, de acuerdo a como te sientes, piensas o actúas la mayoría de veces,  poniendo una X sobre el número que mejor exprese la respuesta que Ud. Indique. </p></td>
+          </tr>
+          <tr>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>
+               <div align="right">
+               <table  border="0">
+                 <tr>
+                   <th style="width:90px">Raras Veces</th>
+                   <th style="width:90px">Pocas Veces</th>
+                   <th style="width:90px">Algunas veces</th>
+                   <th style="width:90px">Muchas veces</th>
+                   <th style="width:90px">Frecuente-mente</th>
+                   <th style="width:90px">Siempre</th>
+                 </tr>
+               </table>
+               </div>
+               </td>
+          </tr>
+              
+              <?php  foreach($this->listaPreguntas as $index=>$item){ ?>
+         
+         
+          <tr>
+            <td width="2%">&nbsp;<?php echo $item['id'];?></td>
+            <td width="49%">&nbsp;<?php echo $item['descrip'];?></td>
+            <td width="49%">
+              
+                 <?php if (count($item['opcion'])>0 ) {?>
+                  <div align="right">
+              <table  border="0">
+              <tr>
+                  <?php  foreach($item['opcion'] as $key=>$value){ ?>
+                <th style="width:90px"><input type="radio" value="<?php echo $value['id'];?>" name="p<?php echo $item['id']?>" id="p<?php echo $item['id'];?>">
+                </th>
+                <?php } ?>
+                
+              </tr>
+            </table>
+            </div>
+                <?php } ?>
+                
+            </td>
+          </tr>
+          
+          <?php } ?>
+          
+          
+          <tr>
+            <td colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+            <div style="padding:3px" align="center">
+            <input type="submit" name="button" id="button" value="Guardar Cambios" />
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" bgcolor="#E9E9E9"><?=$this->paginationControl($this->listaPreguntas, 'Sliding', 'pagination.phtml', array('generar' => true)); ?></td>
+          </tr>
+          
+        </table>
+       
+           </div>
+    </form>
+
+</div>

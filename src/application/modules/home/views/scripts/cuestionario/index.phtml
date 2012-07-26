@@ -4,6 +4,56 @@
 
     <form name="frmcuestionario" id="frmcuestionario">
         INSTRUCCIONES
+        <div style="padding: 20px">
+            
+           
+
+        <?=$this->paginationControl($this->listaPreguntas, 'Sliding', 'pagination.phtml', array('generar' => true)); ?>
+            
+        <table width="100%" border="0" cellspacing="0" class="TCuerpoPaginaEncuesta">
+			<tbody>
+                            <?php  foreach($this->listaPreguntas as $index=>$item){ ?>
+                            <tr>
+				<td class="LaPregunta Normal"><table cellspacing="0" class="TablaPregunta">
+					<tbody><tr>
+						<td class="TituloPregunta"><a name="A18962310"></a><span class="OrdenPregunta"><?php echo $item['id'];?>. </span><span class="DescripcionPregunta"><b> <?php echo $item['descrip'];?> </b></span></td>
+					</tr>
+                                        
+                                        
+                                        <?php if (count($item['opcion'])>0 ) {?>
+                                        
+					<tr>
+						<td class="CeldaTablaRespuesta"><table cellspacing="0" class="TablaRespuesta">
+							<tbody><tr>
+								<td>
+                                                                    <table border="0" class="RadioButtonList" id="18962310">
+									<tbody>
+                                                                         <?php  foreach($item['opcion'] as $key=>$value){ ?>
+                                                                        <tr>
+                                                                            <td><input type="radio" value="<?php echo $value['id'];?>" name="p<?php echo $item['id']?>" id="p<?php echo $item['id'];?>"></td>
+                                                                            <td>
+                                                                                <label> <?php echo $value['name'];?></label>
+                                                                            </td>
+									</tr>
+                                                                        <?php } ?>
+								</tbody></table>
+                                                                
+                                                                </td>
+							</tr>
+						</tbody></table>
+						</td>
+					</tr>
+                                        <?php } ?>
+                                        
+                                        
+                                        
+				</tbody></table>
+				</td>
+			</tr>
+                         <?php } ?>
+		</tbody></table>
+            <?=$this->paginationControl($this->listaPreguntas, 'Sliding', 'pagination.phtml', array('generar' => true)); ?>
+             </div>
     </form>
 
 </div>
