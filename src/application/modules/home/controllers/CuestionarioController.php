@@ -96,11 +96,11 @@ class Home_CuestionarioController extends App_Controller_Action_Encuestado{
                  if (empty($op)){
                      $data['opcion_id'] = $value;
                      $data['pregunta_id'] = $key;
-                     $p->addOpcion($data);
-                   // echo "<br>inset"; 
+                     $p->addOpcion($data, $this->auth['usuario']->id);
+                   // echo "<br>inset";
                  }else{
                       $data['opcion_id'] = $value;
-                      $p->updateOpcion($data, $key);
+                      $p->updateOpcion($data, $key, $this->auth['usuario']->id);
                     //echo "<br>update"; 
                  }
 //                 

@@ -53,3 +53,21 @@ input[disabled], select[disabled], textarea[disabled]{ background-color: #EBEBE4
 .bad, .errors li { color:#c33 }
 .block .bad, .block .good{ padding-left: 15px; background-position:left 3px }
 .good, .success{ color:#390 }
+.cGray { color:#8C8D91; }
+
+/* styles login */
+/*contentLoginMLS*/
+
+.TitleLoginEs {
+    background: none;
+    margin: 10px 0 0;
+    padding: 0;
+    height: 55px;
+    font-size: 24px
+}
+#loginMLS{ margin: 0 auto; width: 400px; }
+.blockFieldMLS .textoLogin{ width:90px; }
+.sizeInputLogin { margin:0 0 5px; width:235px; }
+.responseLog{ margin-left: 90px; }
+.bloqueL{ position:relative; margin-top:8px; overflow:hidden }
+/*.respW { margin: -5px 0 10px 125px; line-height: 1; text-align: left; }*/

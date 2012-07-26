@@ -7,14 +7,14 @@
     <div class="span6">
         <div class="btn-group" style="float: right">
             <?php if (isset($this->previous)): ?>
-            <a href="<?= $this->url(array('page' => $this->previous)); ?>" rel="tooltip" data-original-title="Anterior" class="btn"><</a>
+            <a href="<?= $this->url(array('page' => $this->previous)); ?>" rel="tooltip" data-original-title="Anterior" class="btn"><<</a>
             <?php else : ?>
-            <a rel="tooltip" data-original-title="Anterior" class="btn disabled"><</a>
+            <a rel="tooltip" data-original-title="Anterior" class="btn disabled"><<</a>
             <?php endif; ?>
             <?php if (isset($this->next)): ?>
-            <a href="<?= $this->url(array('page' => $this->next)); ?>" rel="tooltip" data-original-title="Siguiente" class="btn">></a>
+            <a href="<?= $this->url(array('page' => $this->next)); ?>" rel="tooltip" data-original-title="Siguiente" class="btn">>></a>
             <?php else : ?>
-            <a rel="tooltip" data-original-title="Siguiente" class="btn disabled">></a>
+            <a rel="tooltip" data-original-title="Siguiente" class="btn disabled">>></a>
             <?php endif; ?>
         </div>
         <span id="infopaginas"><?= $this->current; ?> de <?= $this->last; ?></span>
