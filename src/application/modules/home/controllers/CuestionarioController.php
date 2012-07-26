@@ -38,6 +38,11 @@ class Home_CuestionarioController extends App_Controller_Action_Encuestado{
     
      public function preguntasAction()
     {   
+        
+        $this->view->headScript()->appendFile(
+            $this->config->app->mediaUrl . '/js/libs/jquery-1.7.1.min.js'
+        );
+        
         $preguntaForPage = $this->config->app->elementsForPage;
         $page = ($this->_request->getParam("page", 1));
         
