@@ -33,7 +33,6 @@ class Application_Model_Pregunta extends App_Db_Table_Abstract{
                                     "opcion" => $objest->getOpcion($value["id"]) 
                                     );
         }
-   
 //        echo "<pre>";
 //        print_r($apregunta);
 //        echo "</pre>";
@@ -52,17 +51,48 @@ class Application_Model_Pregunta extends App_Db_Table_Abstract{
         )   
         ->where('o.pregunta_id = ?', $idPregunta);
         
-        
-        
-//         ->joinLeft(
-//                array('r' => "respuesta"),
-//                'r.opcion_id= o.id',
-//                array('r.opcion_id')
-//              )        
-        //echo "<br>".$sql."<br>";
         $aopcion = $db->fetchAll($sql);    
         return $aopcion;
     }
+    
+    
+    public static function getRespuesta($idPregunta)
+    {
+        $objest = new Application_Model_Pregunta();
+        $db = $objest->getAdapter();
+        $sql = $db->select()->from(
+            array('r' => "respuesta" ),
+            array('opcion_id')
+        )   
+        ->where('r.usuario_id  = 1')
+        ->where('r.pregunta_id   = ?', $idPregunta);
+        
+        $aopcion = $db->fetchAll($sql);    
+        
+        $res = empty($aopcion[0]['opcion_id'])?"":$aopcion[0]['opcion_id'];
+        return $res;
+    }
+    
+    
+    
+    
+    public function addOpcion( $data )
+    {
+        $data['usuario_id'] = 1;
+        return $this->_db->insert("respuesta", $data);
+    }
+
+
+    public function updateOpcion($data, $idPregunta)
+    {
+        //$data = array();
+        //$data['c_visible_product'] = 'delete';
+        $where = "pregunta_id = '$idPregunta' and usuario_id=1";
+
+        $this->_db->update(array('r' => "respuesta"), $data, $where);
+    }
+    
+    
 }
 
 ?>

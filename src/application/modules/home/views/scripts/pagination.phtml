@@ -3,7 +3,7 @@
     No se encontró ningún registro
 </div>
 <?php endif; ?>
-<div class="row-fluid paginado">
+<div class="row-fluid paginado">  <input name="page" id="page" value="<?php echo $this->current ?>" type="hidden" > 
     <div class="span6">
         <div class="btn-group" style="float: right">
             <?php if (isset($this->previous)): ?>

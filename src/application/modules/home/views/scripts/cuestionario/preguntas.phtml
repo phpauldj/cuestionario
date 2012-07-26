@@ -1,19 +1,15 @@
 <?php echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
 <?php echo $this->partial('_partials/_menu.phtml', array('activo'=>$this->activo)); ?>
+<?php 
+$res = new Application_Model_Pregunta();
+?>
 <div class="">
 
     <form action="/cuestionario/agregar" method="post" name="frmcuestionario" id="frmcuestionario">
         
       <div style="padding: 20px">
             
-           
 
-        <p>
-          
-            
-            
-            
-         
         <table width="1000" border="0" align="center" cellpadding="3" cellspacing="3">
              
              <tr>
@@ -26,7 +22,9 @@
                <td colspan="3" bgcolor="#E9E9E9"><?=$this->paginationControl($this->listaPreguntas, 'Sliding', 'pagination.phtml', array('generar' => true)); ?></td>
              </tr>
              <tr>
-               <td colspan="3"><p>Este  cuestionario contiene un conjunto de frases que cortas que permite hacer una  descripción de Ud. mismo(a). </p>
+               <td colspan="3"><p>
+                      
+                       Este  cuestionario contiene un conjunto de frases que cortas que permite hacer una  descripción de Ud. mismo(a). </p>
                <p>Para ello,  diga en qué medida cada una de las oraciones que aparecen a continuación es  verdadera, de acuerdo a como te sientes, piensas o actúas la mayoría de veces,  poniendo una X sobre el número que mejor exprese la respuesta que Ud. Indique. </p></td>
           </tr>
           <tr>
@@ -60,8 +58,12 @@
                   <div align="right">
               <table  border="0">
               <tr>
-                  <?php  foreach($item['opcion'] as $key=>$value){ ?>
-                <th style="width:90px"><input type="radio" value="<?php echo $value['id'];?>" name="p<?php echo $item['id']?>" id="p<?php echo $item['id'];?>">
+                  <?php  foreach($item['opcion'] as $key=>$value){
+                          //$seect = $this->asdasd(1);
+                      ?>
+                <th style="width:90px">
+                    <?php $op = $res->getRespuesta($item['id']);  ?>
+                    <input type="radio" value="<?php echo $value['id'];?>" name="<?php echo $item['id']?>" id="<?php echo $item['id'];?>" <?php echo ($value['id']==$op)?'checked="cheked"':''  ?> >
                 </th>
                 <?php } ?>
                 

@@ -1,5 +1,7 @@
 <?php echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
 <?php echo $this->partial('_partials/_menu.phtml', array('activo'=>$this->activo)); ?>
+
+
 <div class="">
 
     <form name="frmcuestionario" id="frmcuestionario">
@@ -30,7 +32,9 @@
 									<tbody>
                                                                          <?php  foreach($item['opcion'] as $key=>$value){ ?>
                                                                         <tr>
-                                                                            <td><input type="radio" value="<?php echo $value['id'];?>" name="p<?php echo $item['id']?>" id="p<?php echo $item['id'];?>"></td>
+                                                                            <td>
+                                                                                
+                                                                                <input type="radio" value="<?php echo $value['id'];?>" name="p<?php echo $item['id']?>" id="p<?php echo $item['id'];?>"></td>
                                                                             <td>
                                                                                 <label> <?php echo $value['name'];?></label>
                                                                             </td>

@@ -68,10 +68,43 @@ class Home_CuestionarioController extends App_Controller_Action_Encuestado{
     {
         if ($this->getRequest()->isPost()) {
             $params = $this->_getAllParams();
-                  echo "<pre>";
-            print_r($params);
-            echo "</pre>";
-            exit;
+            $page = ($this->_request->getParam("page", 1));
+            
+            unset($params['button']);
+            unset($params['action']);
+            unset($params['controller']);
+            unset($params['module']);
+            unset($params['page']);
+            
+//            echo "==>".$page;
+//            echo "<pre>";
+//            print_r($params);
+//            echo "</pre>";
+            
+           
+            
+            $p = new Application_Model_Pregunta();
+           
+             foreach ($params as $key => $value) {
+                 $op = $p->getRespuesta($key);
+                 //echo "<br>-> ".$p->getRespuesta($key);
+                 if (empty($op)){
+                     $data['opcion_id'] = $value;
+                     $data['pregunta_id'] = $key;
+                     $p->addOpcion($data);
+                   // echo "<br>inset"; 
+                 }else{
+                      $data['opcion_id'] = $value;
+                      $p->updateOpcion($data, $key);
+                    //echo "<br>update"; 
+                 }
+//                 
+                //echo "<br>".$key;   
+            }
+            //$p->addOpcion($data);
+            
+            $this->_redirect('/cuestionario/preguntas/page/'.$page);
+            //exit;
 //            if ($formAgregar->isValid($params)) {
 //                $c->agregarCliente($params);
 //                $this->getMessenger()->success('El cliente se agrego con exito!');
