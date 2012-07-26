@@ -76,18 +76,18 @@ class Application_Model_Pregunta extends App_Db_Table_Abstract{
     
     
     
-    public function addOpcion( $data )
+    public function addOpcion($data, $usuarioId)
     {
-        $data['usuario_id'] = 1;
+        $data['usuario_id'] = $usuarioId;
         return $this->_db->insert("respuesta", $data);
     }
 
 
-    public function updateOpcion($data, $idPregunta)
+    public function updateOpcion($data, $idPregunta, $usuarioId)
     {
         //$data = array();
         //$data['c_visible_product'] = 'delete';
-        $where = "pregunta_id = '$idPregunta' and usuario_id=1";
+        $where = "pregunta_id = '$idPregunta' and usuario_id = '$usuarioId'";
 
         $this->_db->update(array('r' => "respuesta"), $data, $where);
     }

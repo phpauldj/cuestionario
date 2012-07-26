@@ -1,29 +1,29 @@
 <?php 
-echo md5("123456");
+//echo md5("123456");
 echo $this->partial('_partials/_messages.phtml', array('flashMessages' => $this->flashMessages)); ?>
-<div id="contentLoginMLS" class="left">
-    <h6 class="TitleLoginEs">Ingrese al Cuestionario</h6>
+<div id="contentLoginMLS">
+    <center><h6 class="TitleLoginEs">Ingrese al Cuestionario</h6></center>
     <form id="loginMLS" method="post" action="">
         <fieldset class="blockFieldMLS">
-            <div class="block">
-                <label for="usuarioMLS" class="TextoInputLogin left fnormal">Usuario</label>
+            <div class="bloqueL">
+                <label for="usuarioMLS" class="textoLogin left fnormal">Usuario</label>
                 <?php $errors = $this->frmlogin->userEmail->hasErrors(); ?>
                 <?= $this->frmlogin->userEmail->setAttribs(array('alt' => '', 'id' => 'femail', 'class' => 'sizeInputLogin placeH cGray left', 'tabindex' => '1'))->renderViewHelper(); ?>
+                <span class="responseLog left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->frmlogin->userEmail->errMsg:''); ?>
+                </span>
             </div>
-            <span class="response left <?php echo ($errors)?'bad':'' ?>">
-                <?php echo ($errors?$this->frmlogin->userEmail->errMsg:''); ?>
-            </span>
             <div class="respW"></div>
-            <div class="block">
-                <label for="passMLS" class="TextoInputLogin left fnormal">Contraseña</label>
+            <div class="bloqueL">
+                <label for="passMLS" class="textoLogin left fnormal">Contraseña</label>
                 <?php $errors = $this->frmlogin->userPass->hasErrors(); ?>
                 <?= $this->frmlogin->userPass->setAttribs(array('id' => 'fpassword', 'class' => 'sizeInputLogin left', 'tabindex' => '1'))->renderViewHelper(); ?>
+                <span class="responseLog left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->frmlogin->userPass->errMsg:''); ?>
+                </span>
             </div>
-            <span class="response left <?php echo ($errors)?'bad':'' ?>">
-                <?php echo ($errors?$this->frmlogin->userPass->errMsg:''); ?>
-            </span>
-            <div class="block">
-                <input type="submit" id="loginAdminBtn" value="Ingresar" class="btnAlladmin"/>
+            <div class="btnContent">
+                <input type="submit" id="" value="Ingresar" class="button left"/>
             </div>
             <div class="respW"></div>
         </fieldset>
