@@ -33,9 +33,6 @@ class Application_Model_Pregunta extends App_Db_Table_Abstract{
                                     "opcion" => $objest->getOpcion($value["id"]) 
                                     );
         }
-//        echo "<pre>";
-//        print_r($apregunta);
-//        echo "</pre>";
         
         return $apregunta;
     }
@@ -88,7 +85,6 @@ class Application_Model_Pregunta extends App_Db_Table_Abstract{
         //$data = array();
         //$data['c_visible_product'] = 'delete';
         $where = "pregunta_id = '$idPregunta' and usuario_id = '$usuarioId'";
-
         $this->_db->update(array('r' => "respuesta"), $data, $where);
     }
     
