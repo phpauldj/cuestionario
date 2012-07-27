@@ -10,6 +10,14 @@ $res = new Application_Model_Pregunta();
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
 }
+
+/*
+tr.encuesta:nth-child(even) {background: #CCC }
+tr.encuesta:nth-child(odd) {background: #FFF}
+
+tr.class:nth-child(even) {background: #EEE}
+tr.class:nth-child(odd) {background: #FFF}
+*/
 .btn-group .btn {
     border-radius: 0 0 0 0;
     float: left;
@@ -129,24 +137,28 @@ a {
                <div align="right">
                <table  border="0">
                  <tr>
-                   <th bgcolor="#CCCCCC" style="width:90px">Raras Veces</th>
-                   <th bgcolor="#CCCCCC" style="width:90px">Pocas Veces</th>
-                   <th bgcolor="#CCCCCC" style="width:90px">Algunas veces</th>
-                   <th bgcolor="#CCCCCC" style="width:90px">Muchas veces</th>
-                   <th bgcolor="#CCCCCC" style="width:90px">Frecuente-mente</th>
-                   <th bgcolor="#CCCCCC" style="width:90px">Siempre</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Raras Veces</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Pocas Veces</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Algunas veces</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Muchas veces</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Frecuente - mente</th>
+                   <th bgcolor="#CCCCCC" style="width:77px">Siempre</th>
                  </tr>
                </table>
                </div>
                </td>
           </tr>
-              
-              <?php  
+          <tr >
+            <td colspan="3">
+            
+              <table width="100%" border="0" id="encuesta">
+                <?php  
               $i=0;
               foreach($this->listaPreguntas as $index=>$item){ $i++;?>
          
-         
-          <tr  <?php echo ($i%2==0?'style="background: #FFF"':'') ?> class="normal">
+         <?php //echo ($i%2==0?'style="background: #FFF"':'') ?>
+          
+          <tr   class="normal encuesta">
             <td width="2%">&nbsp;<?php echo $item['id'];?></td>
             <td width="49%">&nbsp;<?php echo $item['descrip'];?></td>
             <td width="49%">
@@ -173,6 +185,9 @@ a {
           </tr>
           
           <?php } ?>
+            </table></td>
+          </tr>    
+             
           
           
           <tr>
