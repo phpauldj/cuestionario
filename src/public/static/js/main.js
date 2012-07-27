@@ -88,8 +88,17 @@ $(function(){
                 }				
             });*/
         };
+        this.validGrabar = function(){
+            var aLinkP = $('.btn');
+            aLinkP.bind('click',function(){
+                var retorno = $(this).attr('return');
+                //alert(retorno);
+                location.href = urls.siteUrl+retorno+'#contentEnc';
+            });
+        }
     };
     
     var objc = new Cuestionario();
     objc.ficha();
+    objc.validGrabar();
 });
