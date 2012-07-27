@@ -29,26 +29,21 @@ class Home_CuestionarioController extends App_Controller_Action_Encuestado{
         $paginador = Zend_Paginator::factory($listaPregunta);
         $paginador->setItemCountPerPage($preguntaForPage)->setCurrentPageNumber($page);
         $this->view->listaPreguntas = $paginador;
+        
+        $this->render('preguntas');
     }
     
      public function preguntasAction()
-    {   
-        
-        $this->view->headScript()->appendFile(
-            $this->config->app->mediaUrl . '/js/libs/jquery-1.7.1.min.js'
-        );
-        
+    {
         $preguntaForPage = $this->config->app->elementsForPage;
         $page = ($this->_request->getParam("page", 1));
         
         $p = new Application_Model_Pregunta();
         $listaPregunta = $p->getPregunta(1);
         
-        
         $paginador = Zend_Paginator::factory($listaPregunta);
         $paginador->setItemCountPerPage($preguntaForPage)->setCurrentPageNumber($page);
         $this->view->listaPreguntas = $paginador;
-
     }
     
     public function  agregarAction()
@@ -77,7 +72,7 @@ class Home_CuestionarioController extends App_Controller_Action_Encuestado{
                       $p->updateOpcion($data, $key, $this->auth['usuario']->id);
                  }
             }
-            $this->_redirect('/cuestionario/preguntas/page/'.$page);
+            $this->_redirect('/cuestionario/index/page/'.$page);
 
         }
     }
